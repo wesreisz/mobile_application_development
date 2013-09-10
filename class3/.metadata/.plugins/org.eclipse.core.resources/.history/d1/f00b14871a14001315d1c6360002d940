@@ -1,0 +1,11 @@
+package com.wesleyreisz.android.class3.carsim;
+
+public class Car {
+	IEngine engine;
+	public Car(IEngine engine){
+		this.engine = engine;
+	}
+	public static void main(String[] args){
+		Car car = new Car();
+	}
+}

@@ -1,0 +1,12 @@
+package com.wesleyreisz.mobiledev.linkedlist;
+
+public class Node {
+	private String value;
+	private Node pointerNode;
+	
+	public Node(String value) {
+		
+		
+	}
+
+}

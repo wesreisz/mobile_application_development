@@ -1,0 +1,14 @@
+package com.wesleyreisz.interview.linkedlist;
+
+public class MyLinkedList {
+
+	public void add(String string) {
+		Node tmpNode = new Node();
+	}
+
+	public String print() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

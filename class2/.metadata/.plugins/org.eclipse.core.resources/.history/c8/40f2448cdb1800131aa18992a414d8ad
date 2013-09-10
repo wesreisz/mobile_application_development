@@ -1,0 +1,18 @@
+package com.wesleyreisz.mobiledev.linkedlist;
+
+public class MyNodeList {
+	private Node nextNode = null;
+	public void add(String value) {
+		Node tmpNode = new Node(value);	
+		if(nextNode!=null){
+			nextNode.setPointerNode(nextNode);
+		}
+		nextNode = tmpNode;
+	}
+
+	public String print() {
+		// TODO Auto-generated method stub
+		return "";
+	}
+
+}

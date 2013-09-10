@@ -1,0 +1,18 @@
+package com.wesleyreisz.interview.linkedlist;
+
+public class MyLinkedList {
+	private Node pointerNode = null;
+
+	public void add(String input) {
+		Node tmpNode = new Node(input);
+		if(pointerNode!=null){
+			pointerNode.setPointerNode(tmpNode);
+		}
+	}
+
+	public String print() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

@@ -1,0 +1,5 @@
+package com.wesleyreisz.android.class3.carsim;
+
+public class IEngine {
+	double move(int speed);
+}

@@ -1,0 +1,26 @@
+INDEX VERSION 1.126+/Users/wesleyreisz/workspaces/school/android/class2/.metadata/.plugins/org.eclipse.jdt.core
+1384487945.index
+4238209716.index
+2303784812.index
+2138123120.index
+2432717000.index
+545134401.index
+850568439.index
+309609134.index
+1819685514.index
+3302703152.index
+2384028132.index
+3266567714.index
+2177805565.index
+3712507179.index
+2303493509.index
+2545238116.index
+1128719391.index
+1271342938.index
+3191966955.index
+156905802.index
+3321539481.index
+2725498208.index
+1833648217.index
+2428554107.index
+3622583421.index
