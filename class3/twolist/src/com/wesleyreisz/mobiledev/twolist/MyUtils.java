@@ -3,20 +3,10 @@ package com.wesleyreisz.mobiledev.twolist;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.wesleyreisz.mobiledev.twolist.strategies.ITwoListStrategy;
-import com.wesleyreisz.mobiledev.twolist.strategies.SimpleForRemovalStrategyImpl;
+import com.wesleyreisz.mobiledev.twolist.trie.Trie;
+import com.wesleyreisz.mobiledev.twolist.trie.TrieImpl;
 
 public class MyUtils<T> {
-	private ITwoListStrategy<T> strategy;
-	
-	
-	public MyUtils(){
-		strategy = new SimpleForRemovalStrategyImpl<T>();
-	}
-	
-	public MyUtils(ITwoListStrategy<T> strategy){
-		this.strategy = strategy;
-	}
 	
 	public List<List<T>> compareList(List<T> group1, List<T> group2) {
 		List<List<T>> results = new ArrayList<List<T>>();
@@ -26,6 +16,17 @@ public class MyUtils<T> {
 	}
 	
 	private List<T> getDifference(List<T> group1, List<T> group2){
-		return strategy.processList(group1, group2);
+		Trie<T> trie = new TrieImpl<T>();
+		for(T item:group1){
+			trie.add(String.valueOf(item), item);
+		}
+		
+		List<T> results =new ArrayList<T>();
+		for(T item:group2){
+			if(trie.find(String.valueOf(item))==null){
+				results.add(item);
+			}
+		}
+		return results;
 	}
 }
