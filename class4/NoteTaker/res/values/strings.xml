@@ -4,5 +4,10 @@
     <string name="app_name">NoteTaker</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
+    <string name="title">Title</string>
+    <string name="date">Date</string>
+    <string name="_">-</string>
+    <string name="note">Note:</string>
+    <string name="save">Save</string>
 
 </resources>

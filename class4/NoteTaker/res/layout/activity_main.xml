@@ -8,9 +8,84 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".MainActivity" >
 
-    <TextView
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" android:baselineAligned="false">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1" >
+
+                <TextView
+                    android:id="@+id/textTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/title"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    tools:ignore="NestedWeights" />
+
+                <EditText
+                    android:id="@+id/txtTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" android:inputType="text"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1" >
+
+                <TextView
+                    android:id="@+id/textView1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="@string/date"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/_"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/note"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <EditText
+            android:id="@+id/txtNotes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textMultiLine" >
+
+            <requestFocus />
+        </EditText>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnNote"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:text="@string/save" />
 
 </RelativeLayout>
