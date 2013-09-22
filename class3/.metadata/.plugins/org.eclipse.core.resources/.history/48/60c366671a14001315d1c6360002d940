@@ -1,8 +1,0 @@
-package com.wesleyreisz.android.class3.carsim;
-
-public class Car {
-	IEngine engine;
-	public static void main(String[] args){
-		Car car = new Car();
-	}
-}
