@@ -1,9 +1,0 @@
-package com.wesleyreisz.mobiledev.linkedlist;
-
-public class Node {
-
-	public Node(String value) {
-		// TODO Auto-generated constructor stub
-	}
-
-}

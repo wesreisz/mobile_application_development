@@ -1,9 +1,0 @@
-package com.wesleyreisz.interview.linkedlist;
-
-public class Node {
-
-	public Node(String input) {
-		// TODO Auto-generated constructor stub
-	}
-
-}
