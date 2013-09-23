@@ -6,9 +6,11 @@ import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.EditText;
 
 public class MainActivity extends Activity {
-
+	private boolean isInEditMode = true;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -19,7 +21,20 @@ public class MainActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				btnSave.setText("Clicked");
+				EditText txtTitle = (EditText)findViewById(R.id.txtTitle);
+				EditText txtNotes = (EditText)findViewById(R.id.txtNotes);
+				
+				if(isInEditMode){
+					isInEditMode=false;
+					txtTitle.setEnabled(false);
+					txtNotes.setEnabled(false);
+					btnSave.setText("Edit");
+				}else{
+					isInEditMode=true;
+					txtTitle.setEnabled(true);
+					txtNotes.setEnabled(true);
+					btnSave.setText("Save");
+				}
 			}
 		});
 	}
