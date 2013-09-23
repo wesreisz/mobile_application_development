@@ -8,15 +8,21 @@ import java.util.List;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.ContextMenu;
+import android.view.ContextMenu.ContextMenuInfo;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 public class ListNotesActivity extends Activity {
+	
+
 	private List<Note> notes = new ArrayList<Note>();
 	private ListView listNotesView;
 	private int editingNoteId = -1;
@@ -39,6 +45,8 @@ public class ListNotesActivity extends Activity {
 			}
 		});
 
+		registerForContextMenu(listNotesView);
+		
 		notes.add(new Note("Note 1", "Super Special Note 1 Details", new Date()));
 		notes.add(new Note("Note 2", "Super Special Note 2 Details", new Date()));
 		notes.add(new Note("Note 3", "Super Special Note 3 Details", new Date()));
@@ -46,6 +54,23 @@ public class ListNotesActivity extends Activity {
 		notes.add(new Note("Note 5", "Super Special Note 5 Details", new Date()));
 		
 		populateList();
+	}
+
+	@Override
+	public void onCreateContextMenu(ContextMenu menu, View v,
+			ContextMenuInfo menuInfo) {
+		super.onCreateContextMenu(menu, v, menuInfo);
+		MenuInflater inflater = getMenuInflater();
+		inflater.inflate(R.menu.content_menu, menu); 
+	}
+	
+	@Override
+	public boolean onContextItemSelected(MenuItem item) {
+		AdapterContextMenuInfo info = (AdapterContextMenuInfo)item.getMenuInfo();
+		notes.remove(info.position);
+		populateList();
+		
+		return true;
 	}
 
 	@Override

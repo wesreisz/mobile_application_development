@@ -12,5 +12,6 @@
     <string name="title_activity_list_notes">Note Taker</string>
     <string name="add_note">Add Note</string>
     <string name="cancel_button">Cancel</string>
+    <string name="delete">Delete</string>
 
 </resources>
