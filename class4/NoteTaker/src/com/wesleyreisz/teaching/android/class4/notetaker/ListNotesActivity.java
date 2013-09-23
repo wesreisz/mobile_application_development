@@ -104,8 +104,13 @@ public class ListNotesActivity extends Activity {
 	
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		if(requestCode==RESULT_CANCELED){
+		if(resultCode==RESULT_CANCELED){
 			return;
+		}
+		if(resultCode==EditNoteActivity.RESULT_DELETE){
+			notes.remove(editingNoteId);
+			editingNoteId = -1;
+			populateList();
 		}
 		
 		Serializable extra = data.getSerializableExtra("note");

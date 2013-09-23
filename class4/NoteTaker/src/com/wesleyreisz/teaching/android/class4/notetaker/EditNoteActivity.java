@@ -19,6 +19,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 public class EditNoteActivity extends Activity {
+	public static final int RESULT_DELETE = -500;
 	private boolean isInEditMode = true;
 	
 	@Override
@@ -98,14 +99,16 @@ public class EditNoteActivity extends Activity {
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
-		builder.setMessage("Are you sure you want to delete this item? It can't be undone?");
+		builder.setMessage(R.string.are_you_sure_you_want_to_delete_this_item_it_can_t_be_undone_);
 		builder.setTitle("Confirm Delete");
 		builder.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
 			
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
-				// TODO Auto-generated method stub
+				Intent returnIntent = new Intent();
 				
+				setResult(RESULT_DELETE, returnIntent);
+				finish();
 			}
 		});
 		
