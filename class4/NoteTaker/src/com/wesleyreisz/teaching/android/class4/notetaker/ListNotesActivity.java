@@ -32,6 +32,7 @@ public class ListNotesActivity extends Activity {
 			public void onItemClick(AdapterView<?> adapter, View view, int itemNumber,
 					long id) {
 				Intent editNoteIntent = new Intent(view.getContext(),EditNoteActivity.class);
+				editNoteIntent.putExtra("note", notes.get(itemNumber));
 				startActivity(editNoteIntent);
 			}
 		});
