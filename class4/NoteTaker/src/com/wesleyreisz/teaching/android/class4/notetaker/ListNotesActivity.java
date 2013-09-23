@@ -10,16 +10,31 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 public class ListNotesActivity extends Activity {
 	private List<Note> notes = new ArrayList<Note>();
+	private ListView listNotesView;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_list_notes);
+		
+		listNotesView = (ListView)findViewById(R.id.listNotes);
+		listNotesView.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> adapter, View view, int itemNumber,
+					long id) {
+				Intent editNoteIntent = new Intent(view.getContext(),EditNoteActivity.class);
+				startActivity(editNoteIntent);
+			}
+		});
 
 		notes.add(new Note("Super Special Note 1", "Super Special Note 1 Details", new Date()));
 		notes.add(new Note("Super Special Note 2", "Super Special Note 2 Details", new Date()));
@@ -56,9 +71,7 @@ public class ListNotesActivity extends Activity {
 				this, android.R.layout.simple_list_item_1,android.R.id.text1,values
 			);
 		
-		//step 3 set the adapter into the listview
-		ListView list = (ListView)findViewById(R.id.listNotes);
-		list.setAdapter(adapter);
+		listNotesView.setAdapter(adapter);
 	}
 	
 	@Override
