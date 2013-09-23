@@ -21,6 +21,7 @@ import android.widget.TextView;
 public class EditNoteActivity extends Activity {
 	public static final int RESULT_DELETE = -500;
 	private boolean isInEditMode = true;
+	private boolean isAddingNote = true;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +48,7 @@ public class EditNoteActivity extends Activity {
 			txtNotes.setEnabled(false);
 			btnSave.setText("Edit");
 			
+			isAddingNote = false;
 		}
 		
 		btnCancel.setOnClickListener(new OnClickListener() {
@@ -92,6 +94,10 @@ public class EditNoteActivity extends Activity {
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main, menu);
+		if(isAddingNote){
+			menu.removeItem(R.id.itmDelete);
+		}
+		
 		return true;
 	}
 	
