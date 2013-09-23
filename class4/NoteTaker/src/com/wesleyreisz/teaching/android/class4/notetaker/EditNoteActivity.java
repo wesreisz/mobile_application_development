@@ -36,6 +36,12 @@ public class EditNoteActivity extends Activity {
 			
 			DateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
 			txtDate.setText(formatter.format(note.getDate()));
+			
+			isInEditMode=false;
+			txtTitle.setEnabled(false);
+			txtNotes.setEnabled(false);
+			btnSave.setText("Edit");
+			
 		}
 		
 		

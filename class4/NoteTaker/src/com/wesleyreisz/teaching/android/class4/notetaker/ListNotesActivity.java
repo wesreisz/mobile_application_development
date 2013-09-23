@@ -19,6 +19,7 @@ import android.widget.ListView;
 public class ListNotesActivity extends Activity {
 	private List<Note> notes = new ArrayList<Note>();
 	private ListView listNotesView;
+	private int editingNoteId = -1;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -33,15 +34,16 @@ public class ListNotesActivity extends Activity {
 					long id) {
 				Intent editNoteIntent = new Intent(view.getContext(),EditNoteActivity.class);
 				editNoteIntent.putExtra("note", notes.get(itemNumber));
-				startActivity(editNoteIntent);
+				editingNoteId = itemNumber;
+				startActivityForResult(editNoteIntent, 1);
 			}
 		});
 
-		notes.add(new Note("Super Special Note 1", "Super Special Note 1 Details", new Date()));
-		notes.add(new Note("Super Special Note 2", "Super Special Note 2 Details", new Date()));
-		notes.add(new Note("Super Special Note 3", "Super Special Note 3 Details", new Date()));
-		notes.add(new Note("Super Special Note 4", "Super Special Note 4 Details", new Date()));
-		notes.add(new Note("Super Special Note 5", "Super Special Note 5 Details", new Date()));
+		notes.add(new Note("Note 1", "Super Special Note 1 Details", new Date()));
+		notes.add(new Note("Note 2", "Super Special Note 2 Details", new Date()));
+		notes.add(new Note("Note 3", "Super Special Note 3 Details", new Date()));
+		notes.add(new Note("Note 4", "Super Special Note 4 Details", new Date()));
+		notes.add(new Note("Note 5", "Super Special Note 5 Details", new Date()));
 		
 		populateList();
 	}
@@ -80,7 +82,13 @@ public class ListNotesActivity extends Activity {
 		Serializable extra = data.getSerializableExtra("note");
 		if(extra!=null){
 			Note note = (Note)extra;
-			notes.add(note);
+			if (editingNoteId>-1){
+				notes.set(editingNoteId, note);
+				editingNoteId = -1;
+			}else{
+				notes.add(note);
+			}
+			
 			populateList();
 		}
 	}
