@@ -9,5 +9,6 @@
     <string name="_">-</string>
     <string name="note">Note:</string>
     <string name="save">Save</string>
+    <string name="title_activity_list_notes">Note Taker</string>
 
 </resources>
