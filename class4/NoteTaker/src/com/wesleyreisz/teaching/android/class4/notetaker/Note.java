@@ -1,8 +1,9 @@
 package com.wesleyreisz.teaching.android.class4.notetaker;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Note {
+public class Note implements Serializable{
 	private String title;
 	private String note;
 	private Date date;

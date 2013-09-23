@@ -3,10 +3,10 @@ package com.wesleyreisz.teaching.android.class4.notetaker;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Locale;
 
-import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -14,13 +14,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class MainActivity extends Activity {
+public class EditNoteActivity extends Activity {
 	private boolean isInEditMode = true;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
+		setContentView(R.layout.activity_edit_note);
 		
 		final Button btnSave = (Button)findViewById(R.id.btnNote);
 		btnSave.setOnClickListener(new OnClickListener() {
@@ -41,6 +41,17 @@ public class MainActivity extends Activity {
 					String date = dateFormat.format(Calendar.getInstance().getTime());
 					lastUpdated.setText(date);
 					
+					Note note = new Note(
+						txtTitle.getText().toString(),
+						txtNotes.getText().toString(),
+						Calendar.getInstance().getTime()
+					);
+					
+					Intent returnIntent = new Intent();
+					returnIntent.putExtra("note", note);
+					setResult(RESULT_OK, returnIntent);
+					finish();
+					
 				}else{
 					isInEditMode=true;
 					
@@ -58,5 +69,6 @@ public class MainActivity extends Activity {
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
+	
 
 }

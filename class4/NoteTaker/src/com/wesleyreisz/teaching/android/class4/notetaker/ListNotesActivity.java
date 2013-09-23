@@ -1,10 +1,12 @@
 package com.wesleyreisz.teaching.android.class4.notetaker;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -37,8 +39,8 @@ public class ListNotesActivity extends Activity {
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		notes.add(new Note("New Node added", "bleh bleh", new Date()));
-		populateList();
+		Intent editIntent = new Intent(this,EditNoteActivity.class);
+		startActivityForResult(editIntent, 1);
 		return true;
 	}
 
@@ -57,6 +59,16 @@ public class ListNotesActivity extends Activity {
 		//step 3 set the adapter into the listview
 		ListView list = (ListView)findViewById(R.id.listNotes);
 		list.setAdapter(adapter);
+	}
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		Serializable extra = data.getSerializableExtra("note");
+		if(extra!=null){
+			Note note = (Note)extra;
+			notes.add(note);
+			populateList();
+		}
 	}
 
 }
