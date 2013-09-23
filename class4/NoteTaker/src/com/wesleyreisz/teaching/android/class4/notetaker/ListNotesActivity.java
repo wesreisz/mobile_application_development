@@ -79,6 +79,10 @@ public class ListNotesActivity extends Activity {
 	
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		if(requestCode==RESULT_CANCELED){
+			return;
+		}
+		
 		Serializable extra = data.getSerializableExtra("note");
 		if(extra!=null){
 			Note note = (Note)extra;

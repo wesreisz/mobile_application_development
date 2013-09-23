@@ -24,6 +24,7 @@ public class EditNoteActivity extends Activity {
 		setContentView(R.layout.activity_edit_note);
 		
 		final Button btnSave = (Button)findViewById(R.id.btnNote);
+		final Button btnCancel = (Button)findViewById(R.id.btnCancel);
 		final EditText txtTitle = (EditText)findViewById(R.id.txtTitle);
 		final EditText txtNotes = (EditText)findViewById(R.id.txtNotes);
 		final TextView txtDate = (TextView)findViewById(R.id.txtLastUpdated);
@@ -44,6 +45,15 @@ public class EditNoteActivity extends Activity {
 			
 		}
 		
+		btnCancel.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent returnIntent = new Intent();
+				setResult(RESULT_CANCELED,returnIntent);
+				finish();
+			}
+		});
 		
 		btnSave.setOnClickListener(new OnClickListener() {
 			

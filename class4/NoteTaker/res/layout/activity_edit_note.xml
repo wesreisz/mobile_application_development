@@ -9,6 +9,7 @@
     tools:context=".EditNoteActivity" >
 
     <LinearLayout
+        android:id="@+id/linearLayout1"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_alignParentLeft="true"
@@ -17,7 +18,8 @@
 
         <LinearLayout
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content" android:baselineAligned="false">
+            android:layout_height="wrap_content"
+            android:baselineAligned="false" >
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -37,7 +39,8 @@
                     android:id="@+id/txtTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1" android:inputType="text"/>
+                    android:layout_weight="1"
+                    android:inputType="text" />
             </LinearLayout>
 
             <LinearLayout
@@ -77,15 +80,25 @@
 
             <requestFocus />
         </EditText>
-
     </LinearLayout>
+
+    <Button
+        android:id="@+id/btnCancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/linearLayout1"
+        android:layout_alignRight="@+id/linearLayout1"
+        android:layout_marginRight="57dp"
+        android:layout_toLeftOf="@+id/btnNote"
+        android:text="@string/cancel_button" />
 
     <Button
         android:id="@+id/btnNote"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerInParent="true"
+        android:layout_alignBottom="@+id/linearLayout1"
+        android:layout_alignRight="@+id/linearLayout1"
+        android:layout_marginRight="192dp"
         android:text="@string/save" />
 
 </RelativeLayout>
