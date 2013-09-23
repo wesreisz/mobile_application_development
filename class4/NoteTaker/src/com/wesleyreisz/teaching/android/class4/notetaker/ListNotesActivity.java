@@ -7,6 +7,7 @@ import java.util.List;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -24,7 +25,24 @@ public class ListNotesActivity extends Activity {
 		notes.add(new Note("Super Special Note 4", "Super Special Note 4 Details", new Date()));
 		notes.add(new Note("Super Special Note 5", "Super Special Note 5 Details", new Date()));
 		
-		//step 1 create a list
+		populateList();
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.list_notes, menu);
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		notes.add(new Note("New Node added", "bleh bleh", new Date()));
+		populateList();
+		return true;
+	}
+
+	private void populateList() {
 		List<String> values = new ArrayList<String>();
 		for(Note note:notes){
 			values.add(note.getTitle());
@@ -39,13 +57,6 @@ public class ListNotesActivity extends Activity {
 		//step 3 set the adapter into the listview
 		ListView list = (ListView)findViewById(R.id.listNotes);
 		list.setAdapter(adapter);
-	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.list_notes, menu);
-		return true;
 	}
 
 }

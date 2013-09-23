@@ -10,5 +10,6 @@
     <string name="note">Note:</string>
     <string name="save">Save</string>
     <string name="title_activity_list_notes">Note Taker</string>
+    <string name="add_note">Add Note</string>
 
 </resources>
