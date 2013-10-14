@@ -1,0 +1,6 @@
+[submodule "class6/UnitConverter"]
+	path = class6/UnitConverter
+	url = https://github.com/twitter-university/UnitConverter.git
+[submodule "class6/UnitConverterTest"]
+	path = class6/UnitConverterTest
+	url = https://github.com/twitter-university/UnitConverterTest.git
