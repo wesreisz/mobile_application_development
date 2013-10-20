@@ -2,6 +2,7 @@ package com.bignerdranch.android.geoquiz;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.Debug;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
@@ -14,8 +15,9 @@ public class QuizActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_quiz);
+    	super.onCreate(savedInstanceState);
+        Debug.startMethodTracing("QuizActivity.trace");
+    	setContentView(R.layout.activity_quiz);
 
         mTrueButton = (Button)findViewById(R.id.true_button);
         mTrueButton.setOnClickListener(new View.OnClickListener() {
@@ -47,4 +49,14 @@ public class QuizActivity extends Activity {
         return true;
     }
 
+
+
+	@Override
+	protected void onStop() {
+		// TODO Auto-generated method stub
+		super.onStop();
+		Debug.stopMethodTracing();
+	}
+
+    
 }
