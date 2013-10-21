@@ -1,3 +1,7 @@
+/*
+ * The following tutorial is based on a tutorial:
+ *  http://v4all123.blogspot.com/2013/04/fragments-in-android.html
+ */
 package com.example.com.wesleyreisz.android.class7lab;
 
 import com.example.com.wesleyreisz.android.class7lab.fragments.Layout1;
