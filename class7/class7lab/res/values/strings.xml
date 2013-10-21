@@ -4,5 +4,14 @@
     <string name="app_name">Class 7 Lab</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
+    <string name="layout_1">Layout 1</string>
+    <string name="layout_3">Layout 3</string>
+    <string name="layout_2">Layout 2</string>
+    <string name="layout_4">Layout 4</string>
+    <string name="layout1">Layout1</string>
+    <string name="layout2">Layout2</string>
+    <string name="layout3">Layout3</string>
+    <string name="layout4">Layout4</string>
+    <string name="message">Select an Item on the Left</string>
 
 </resources>
