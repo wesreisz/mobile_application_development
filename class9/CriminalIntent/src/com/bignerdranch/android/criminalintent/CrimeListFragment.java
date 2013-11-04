@@ -36,7 +36,7 @@ public class CrimeListFragment extends ListFragment {
         i.putExtra(CrimeFragment.EXTRA_CRIME_ID, c.getId());
         startActivityForResult(i, 0);
     }
-    
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         ((CrimeAdapter)getListAdapter()).notifyDataSetChanged();
