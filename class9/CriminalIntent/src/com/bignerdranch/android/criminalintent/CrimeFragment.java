@@ -2,6 +2,7 @@ package com.bignerdranch.android.criminalintent;
 
 import java.util.UUID;
 
+import android.annotation.TargetApi;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
@@ -36,9 +37,10 @@ public class CrimeFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        
+
         UUID crimeId = (UUID)getArguments().getSerializable(EXTRA_CRIME_ID);
         mCrime = CrimeLab.get(getActivity()).getCrime(crimeId);
+
     }
 
     @Override
@@ -72,8 +74,8 @@ public class CrimeFragment extends Fragment {
                 // set the crime's solved property
                 mCrime.setSolved(isChecked);
             }
-        });       
-  
+        });
+        
         return v; 
     }
 }

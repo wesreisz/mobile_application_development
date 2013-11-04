@@ -31,12 +31,12 @@ public class CrimeListFragment extends ListFragment {
     public void onListItemClick(ListView l, View v, int position, long id) {
         // get the Crime from the adapter
         Crime c = ((CrimeAdapter)getListAdapter()).getItem(position);
-        // start an instance of CrimeActivity
-        Intent i = new Intent(getActivity(), CrimeActivity.class);
+        // start an instance of CrimePagerActivity
+        Intent i = new Intent(getActivity(), CrimePagerActivity.class);
         i.putExtra(CrimeFragment.EXTRA_CRIME_ID, c.getId());
         startActivityForResult(i, 0);
     }
-
+    
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         ((CrimeAdapter)getListAdapter()).notifyDataSetChanged();
