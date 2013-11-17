@@ -10,8 +10,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 
 import android.content.Context;
+import android.util.Log;
 
 public class CriminalIntentJSONSerializer {
+	private static String TAG = "JSONFile";
 	private Context mContent;
 	private String mFileName;
 	
@@ -26,6 +28,7 @@ public class CriminalIntentJSONSerializer {
 			array.put(c.toJSON());
 		}
 		
+		Log.d(TAG,array.toString());
 		Writer writer = null;
 		try{
 			OutputStream out = mContent
