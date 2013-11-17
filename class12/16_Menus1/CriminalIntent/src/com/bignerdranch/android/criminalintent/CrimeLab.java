@@ -53,7 +53,12 @@ public class CrimeLab {
     
     public boolean saveCrimes(){
 		try {
-			mSerializer.saveCrimes(mCrimes);
+			//create if it's null... this is not in the book
+			if (mSerializer==null){
+				mSerializer = new CriminalIntentJSONSerializer(mAppContext,FILENAME);
+			}
+			
+			mSerializer.saveCrimes(mCrimes); //where is this created
 			Log.d(TAG, "crimes saved");
 			return true;
 		} catch (JSONException e) {

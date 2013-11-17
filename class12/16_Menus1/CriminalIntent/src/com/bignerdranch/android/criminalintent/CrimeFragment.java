@@ -54,7 +54,13 @@ public class CrimeFragment extends Fragment {
         setHasOptionsMenu(true);
     }
     
-    public void updateDate() {
+    @Override
+	public void onPause() {
+		super.onPause();
+		CrimeLab.get(getActivity()).saveCrimes();
+	}
+
+	public void updateDate() {
         mDateButton.setText(mCrime.getDate().toString());
     }
 
