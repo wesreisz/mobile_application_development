@@ -61,7 +61,7 @@ public class Crime {
 		json.put(JSON_TITLE, mTitle);
 		json.put(JSON_SOLVED, mSolved);
 		json.put(JSON_DATE, mDate.getTime());
-		return null;
+		return json;
 	}
 
 
