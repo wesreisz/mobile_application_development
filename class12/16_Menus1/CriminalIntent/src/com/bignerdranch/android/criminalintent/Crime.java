@@ -21,6 +21,13 @@ public class Crime {
         mId = UUID.randomUUID();
         mDate = new Date();
     }
+    
+    public Crime(JSONObject json) throws JSONException{
+    	mId = UUID.fromString(json.getString(JSON_ID));
+    	mTitle = json.getString(JSON_TITLE);
+    	mDate = new Date(json.getLong(JSON_DATE));
+    	mSolved = json.getBoolean(JSON_SOLVED);
+    }
 
     @Override
     public String toString() {
