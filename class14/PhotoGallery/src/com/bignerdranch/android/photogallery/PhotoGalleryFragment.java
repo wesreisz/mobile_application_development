@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,8 +14,17 @@ import android.widget.GridView;
 import android.widget.ImageView;
 
 public class PhotoGalleryFragment extends Fragment {
-    GridView mGridView;
+	/*
+	 * Things to point out about this class:
+	 * 1.) getLooper is called after start()
+	 * 2.) onDestroy calls quit on the background thread <--- creates a zombie thread
+	 * 
+	 */
+	
+    private static final String TAG = "PhotoGalleryFragment";
+	GridView mGridView;
     ArrayList<GalleryItem> mItems;
+    ThumbnailDownloader<ImageView> mThumbnailThread;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -23,6 +33,11 @@ public class PhotoGalleryFragment extends Fragment {
         setRetainInstance(true);
         //calls async task on background thread
         new FetchItemsTask().execute();
+        
+        mThumbnailThread = new ThumbnailDownloader<ImageView>();
+        mThumbnailThread.start();
+        mThumbnailThread.getLooper();
+        Log.i(TAG, "Background thread started");
     }
 
     @Override
@@ -37,7 +52,16 @@ public class PhotoGalleryFragment extends Fragment {
         return v;
     }
     
-    void setupAdapter() {
+    
+    
+    @Override
+	public void onDestroy() {
+		super.onDestroy();
+		mThumbnailThread.quit();
+		Log.i(TAG,"Backgroun thread destroyed");
+	}
+
+	void setupAdapter() {
         if (getActivity() == null || mGridView == null) return;
         
         if (mItems != null) {
@@ -77,6 +101,9 @@ public class PhotoGalleryFragment extends Fragment {
     		ImageView imageView = (ImageView)convertView
     				.findViewById(R.id.gallery_item_imageView);
     		imageView.setImageResource(R.drawable.photo_placeholder_150_150);
+    		
+    		GalleryItem item = getItem(position);
+    		mThumbnailThread.queueThumbnail(imageView, item.getUrl());
     		
 			return imageView;
 		}
