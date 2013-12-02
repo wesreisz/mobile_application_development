@@ -56,6 +56,7 @@ public class FlickrFetchr {
     }
     
     public ArrayList<GalleryItem> fetchItems() {
+    	//look at teh GalleryItems
         ArrayList<GalleryItem> items = new ArrayList<GalleryItem>();
         
         try {

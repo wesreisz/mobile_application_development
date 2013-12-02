@@ -20,6 +20,7 @@ public class PhotoGalleryFragment extends Fragment {
         super.onCreate(savedInstanceState);
         
         setRetainInstance(true);
+        //calls async task on background thread
         new FetchItemsTask().execute();
     }
 
@@ -45,7 +46,8 @@ public class PhotoGalleryFragment extends Fragment {
             mGridView.setAdapter(null);
         }
     }
-
+    
+    //creates an async task... this is the important part! see p421
     private class FetchItemsTask extends AsyncTask<Void,Void,ArrayList<GalleryItem>> {
         @Override
         protected ArrayList<GalleryItem> doInBackground(Void... params) {
